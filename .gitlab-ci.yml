@@ -1,0 +1,43 @@
+stages:
+  - build_dev
+  - publish_dev
+
+# cache:
+#   key: ${CI_COMMIT_REF_NAME}
+#   paths:
+#   - node_modules/
+
+variables:
+  GIT_STRATEGY: none
+  DEV_TAG: dev
+  PROD_TAG: prod
+  REPO: dockerhub.datagrand.com/datagrand/beibei_major # docker镜像地址
+  GIT_PROJECT_ADDRESS: ssh://git@git.datagrand.com:58422/frontend_poc/beibei_major.git # 项目地址，如：ssh://git@git.xxx.com:40001/group/myProject.git
+  PROJECT_REPO_NAME: beibei_major # 项目名，如：myProject
+
+before_script:
+  - docker login -u $BEIBEI_MAJOR_USER -p $BEIBEI_MAJOR_PWD dockerhub.datagrand.com # 对应项目CI/CD的settings中Secret variables添加DOCKER_USER, DOCKER_PWD变量，并确保变量名唯一。
+  - git clone -b $CI_COMMIT_REF_NAME --depth=1 $GIT_PROJECT_ADDRESS
+  - cd $PROJECT_REPO_NAME
+  - export DATE=$(git log -1 --pretty=format:"%ad" --date=format:'%Y%m%d' $CI_COMMIT_SHA)
+  - echo 'date:' $DATE
+  - export DOCKER_TAG_SUFFIX="ci"_$DATE"_"${CI_COMMIT_SHA:0:7}
+  - echo 'docker tag suffix:' $DOCKER_TAG_SUFFIX
+
+# lint -> build dev
+build_dev:
+  stage: build_dev
+  script:
+    - sh build/build.sh $REPO $DOCKER_TAG_SUFFIX $BUILD_COMMAND
+  allow_failure: false
+
+# lint -> publish dev
+publish_dev:
+  stage: publish_dev
+  when: manual
+  script:
+    - sh build/publish.sh $REPO $DOCKER_TAG_SUFFIX
+  allow_failure: true
+  dependencies:
+    - build_dev
+

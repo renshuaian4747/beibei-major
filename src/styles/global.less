@@ -1,0 +1,33 @@
+@import '~@bixi-design/layouts/dist/style.less';
+@import '~@bixi-design/core/dist/style.less';
+@import '~@bixi-design/themes/default.less';
+
+@font-size-base: 14px;
+@bixi-dashboard-layout-font-size: 14px;
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.65);
+  font-family: 'PingFang SC', sans-serif;
+
+  .bixi-dashboard-layout-content-body {
+    min-width: 960px;
+  }
+}
+
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ant-modal-body {
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+}

@@ -1,0 +1,10 @@
+{
+	"recommendations": [
+		"stylelint.vscode-stylelint",
+		"wayou.vscode-todo-highlight",
+		"esbenp.prettier-vscode"
+	],
+	"unwantedRecommendations": [
+		"dbaeumer.vscode-eslint"
+	]
+}

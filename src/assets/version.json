@@ -1,0 +1,5 @@
+{
+  "VERSION": "dev",
+  "CI_BUILD_TIME": "dev",
+  "CI_COMMIT_SHA": "dev"
+}

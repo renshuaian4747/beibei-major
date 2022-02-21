@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <g id="个人" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组">
+            <rect id="矩形" fill-opacity="0.01" fill="#FFFFFF" fill-rule="nonzero" x="0" y="0" width="14" height="14"></rect>
+            <path d="M7,12.8333333 C10.2216625,12.8333333 12.8333333,10.2216625 12.8333333,7 C12.8333333,3.7783375 10.2216625,1.16666667 7,1.16666667 C3.7783375,1.16666667 1.16666667,3.7783375 1.16666667,7 C1.16666667,10.2216625 3.7783375,12.8333333 7,12.8333333 Z" id="路径" stroke="#363B45" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M7,6.70833333 C7.80540833,6.70833333 8.45833333,6.05540833 8.45833333,5.25 C8.45833333,4.44459167 7.80540833,3.79166667 7,3.79166667 C6.19459167,3.79166667 5.54166667,4.44459167 5.54166667,5.25 C5.54166667,6.05540833 6.19459167,6.70833333 7,6.70833333 Z" id="路径" stroke="#363B45" stroke-linejoin="round"></path>
+            <path d="M2.92308333,11.1801667 C3.02332917,9.660175 4.28796667,8.45833333 5.83333333,8.45833333 L8.16666667,8.45833333 C9.70999167,8.45833333 10.9733458,9.65699583 11.0765375,11.1741292" id="路径" stroke="#363B45" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

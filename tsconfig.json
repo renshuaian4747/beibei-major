@@ -1,0 +1,59 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "typeRoots": ["./node_modules/@types/", "./src/typings"],
+    "types": ["node"],
+    "allowJs": false,
+    "skipLibCheck": false,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@assets": ["src/assets/index.tsx"],
+      "@components/*": ["src/components/*"],
+      "@components": ["src/components/index.ts"],
+      "@constants/*": ["src/constants/*"],
+      "@constants": ["src/constants/index.ts"],
+      "@cores/*": ["src/cores/*"],
+      "@cores": ["src/cores/index.ts"],
+      "@hooks/*": ["src/hooks/*"],
+      "@hooks": ["src/hooks/index.ts"],
+      "@layouts/*": ["src/layouts/*"],
+      "@layouts": ["src/layouts/index.ts"],
+      "@models/*": ["src/models/*"],
+      "@models": ["src/models/index.ts"],
+      "@monitors/*": ["src/monitors/*"],
+      "@monitors": ["src/monitors/index.ts"],
+      "@pages/*": ["src/pages/*"],
+      "@pages": ["src/pages/index.ts"],
+      "@services/*": ["src/services/*"],
+      "@services": ["src/services/index.ts"],
+      "@stores/*": ["src/stores/*"],
+      "@stores": ["src/stores/index.ts"],
+      "@styles/*": ["src/styles/*"],
+      "@typings/*": ["src/typings/*"],
+      "@utils/*": ["src/utils/*"],
+      "@utils": ["src/utils/index.ts"],
+    }
+  },
+  "linterOptions": {
+    "exclude": [
+      "node_modules",
+      "dist"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

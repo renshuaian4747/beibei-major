@@ -1,0 +1,74 @@
+{
+	"name": "beibei_major",
+	"version": "3.1.0",
+	"private": true,
+	"licenses": [
+		{
+			"type": "xxx"
+		}
+	],
+	"scripts": {
+		"dev": "cross-env NODE_ENV=development webpack serve --config=./webpack.config.js --open",
+		"serve": "cross-env NODE_ENV=development webpack serve --config=./webpack.config.js",
+		"build": "cross-env NODE_ENV=production webpack --config=./webpack.config.js --progress",
+		"build:analysis": "cross-env NODE_ENV=production ANALYSIS=true webpack --config=./webpack.config.js",
+		"lint": "yarn lint:ts && yarn lint:style",
+		"lint:ts": "eslint ./ --ext .ts,.js,.tsx",
+		"lint:style": "stylelint './**/*.less' --syntax less"
+	},
+	"dependencies": {
+		"@ant-design/icons": "^4.6.2",
+		"@bixi-design/builder": "1.4.1",
+		"@bixi-design/charts": "1.4.1",
+		"@bixi-design/core": "1.4.1",
+		"@bixi-design/graphs": "1.4.1",
+		"@bixi-design/hooks": "1.4.1",
+		"@bixi-design/label": "^1.0.1",
+		"@bixi-design/layouts": "1.4.1",
+		"@bixi-design/lint": "1.4.1",
+		"@bixi-design/themes": "1.4.1",
+		"@bixi-design/utils": "1.4.1",
+		"@loadable/component": "^5.14.1",
+		"@sentry/browser": "5.27.2",
+		"antd": "^4.16.13",
+		"axios": "^0.21.1",
+		"crypto-js": "^4.1.1",
+		"echarts": "^5.2.1",
+		"i18next": "^20.2.1",
+		"mobx": "^6.1.8",
+		"mobx-react": "^7.1.0",
+		"qs": "^6.10.3",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-i18next": "^11.8.12",
+		"react-router-dom": "^5.2.0",
+		"types": "^0.1.1"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^8.2.0",
+		"@commitlint/config-conventional": "^8.2.0",
+		"@types/crypto-js": "^4.1.1",
+		"@types/loadable__component": "^5.13.3",
+		"@types/react": "^17.0.3",
+		"@types/react-dom": "^17.0.2",
+		"@types/react-router-dom": "^5.1.7",
+		"core-js": "^3.16.2",
+		"husky": "^4.3.0",
+		"lint-staged": "^10.5.4",
+		"prettier": "^2.3.2"
+	},
+	"browserslist": [
+		"defaults"
+	],
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+		}
+	},
+	"lint-staged": {
+		"**/*.{tsx,ts}": "eslint",
+		"**/*.less": "stylelint"
+	},
+	"description": "A react project"
+}
