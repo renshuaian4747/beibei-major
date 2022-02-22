@@ -27,18 +27,17 @@ const menus: IPortalMenu[] = [
   }
 ];
 
-const userInfo = authStore.userInfo;
-
 const handleChange = (value: string) => {
   authStore.setLegendId(Number(value));
 };
 
 const ExtractHeader = () => {
+  const userInfo = authStore.userInfo;
   return (
     <>
       <div className='major-select'>
         当前联赛：
-        <Select defaultValue={userInfo?.leagueId.toString() || ''} style={{ width: 200, marginRight: 12 }} onChange={handleChange}>
+        <Select defaultValue={(userInfo?.leagueId || '').toString()} style={{ width: 200, marginRight: 12 }} onChange={handleChange}>
           {(userInfo?.leagueList || []).map((item, index) => (
             <Option key={index} value={item.id.toString()}>
               {item.name}
