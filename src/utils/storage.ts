@@ -86,6 +86,12 @@ const $storage = {
   set defaultLegendId(value: number) {
     setItem('defaultLegendId', value);
   },
+  get leagueList() {
+    return (getItem('leagueList') || 0) as [];
+  },
+  set leagueList(value: { name: string; id: number }[]) {
+    setItem('leagueList', value);
+  },
   clear() {
     removeItem('token');
     removeItem('username');

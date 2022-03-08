@@ -1,18 +1,24 @@
 import { UserOutlined } from '@ant-design/icons';
 import { useBreadcrumbs } from '@hooks';
 import { useMount } from 'ahooks';
-import { login } from '@pages/login/services/auth';
-import { addDoubleIntegral } from '@pages/profile/services';
+import { addDoubleIntegral, getUserInfo } from '@pages/profile/services';
 import { authStore } from '@stores';
 import { Card, Form, Avatar, Divider, Button, message, Tag } from 'antd';
 import { observer } from 'mobx-react';
 import React, { useState } from 'react';
 import S from './index.module.less';
-import CryptoJs from 'crypto-js';
+import { $storage } from '@utils/storage';
+import { RADER_DEFAULT_OPTION } from '@pages/profile/constants';
+import { RadarChart } from 'echarts/charts';
+import { use } from 'echarts/core';
+import { Base, ERadarOption } from '@bixi-design/charts';
+
+use(RadarChart);
 
 export default observer(function InfoPage() {
   const { username, userInfo } = authStore;
   const [loading, setLoading] = useState(false);
+  const [options, setOptions] = useState(RADER_DEFAULT_OPTION);
   useBreadcrumbs(['个人中心', '个人信息']);
 
   useMount(() => {
@@ -25,7 +31,7 @@ export default observer(function InfoPage() {
       return;
     }
     setLoading(true);
-    addDoubleIntegral({ token: userInfo?.token as string }).then((res) => {
+    addDoubleIntegral({ token: $storage.token }).then((res) => {
       setLoading(false);
       updateUserInfo();
       if (res.data.code !== 200) {
@@ -37,14 +43,21 @@ export default observer(function InfoPage() {
   };
 
   const updateUserInfo = () => {
-    login({
-      account: username!,
-      password: CryptoJs.MD5('123456').toString()!
+    getUserInfo({
+      token: $storage.token
     })
       .then((res) => {
-        authStore.setUserInfo(res);
-        authStore.setToken(res.token);
-        authStore.setUsername(username);
+        authStore.setUserInfo({ ...res.data.data, token: $storage.token });
+        const indicator: { name: string; max: number }[] = [];
+        const values: number[] = [];
+        const options = JSON.parse(JSON.stringify(RADER_DEFAULT_OPTION));
+        res.data.data.recentPerformList.forEach((item: { text: string; value: string; max: string }) => {
+          indicator.push({ name: item.text, max: Number(item.max) });
+          values.push(Number(item.value));
+        });
+        options.radar.indicator = indicator;
+        options.series[0].data[0].value = values;
+        setOptions(options);
       })
       .catch(console.error);
   };
@@ -95,6 +108,9 @@ export default observer(function InfoPage() {
           <Button disabled={userInfo?.isDouble} type='primary' loading={loading} onClick={makeDouble}>
             {userInfo?.isDouble ? '今日已双倍' : '我要双倍'}
           </Button>
+        </div>
+        <div className={S['radar-container']}>
+          <Base option={options as ERadarOption}></Base>;
         </div>
       </div>
     </Card>

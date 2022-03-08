@@ -6,6 +6,7 @@ class AuthStore {
   username = $storage.username;
   token = $storage.token;
   userInfo = $storage.userInfo;
+  leagueList = $storage.leagueList;
   defaultLegendId: number = $storage.defaultLegendId;
 
   constructor() {
@@ -30,6 +31,11 @@ class AuthStore {
   setLegendId(v: number) {
     this.defaultLegendId = v;
     $storage.defaultLegendId = v;
+  }
+
+  setLeagueList(v: { name: string; id: number }[]) {
+    this.leagueList = v;
+    $storage.leagueList = v;
   }
 
   clear = () => {

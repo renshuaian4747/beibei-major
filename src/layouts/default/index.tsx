@@ -32,13 +32,13 @@ const handleChange = (value: string) => {
 };
 
 const ExtractHeader = () => {
-  const userInfo = authStore.userInfo;
+  const { userInfo, leagueList } = authStore;
   return (
     <>
       <div className='major-select'>
         当前联赛：
         <Select defaultValue={(userInfo?.leagueId || '').toString()} style={{ width: 200, marginRight: 12 }} onChange={handleChange}>
-          {(userInfo?.leagueList || []).map((item, index) => (
+          {(leagueList || []).map((item, index) => (
             <Option key={index} value={item.id.toString()}>
               {item.name}
             </Option>

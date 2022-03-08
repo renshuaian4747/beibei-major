@@ -59,6 +59,7 @@ const LoginPage = observer(function LoginPage() {
         }
         authStore.setToken(res.token);
         authStore.setUsername(username);
+        authStore.setLeagueList(res.leagueList);
         history.replace(ROUTES.Profile.Info);
       })
       .catch(console.error);
