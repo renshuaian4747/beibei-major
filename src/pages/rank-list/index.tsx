@@ -94,7 +94,7 @@ export default function RankListPage() {
 
   return (
     <PageContainer autoHeight={false}>
-      <Table rowKey='rank' onRefresh={refresh} onReset={reset} columns={columns} {...tableProps} />
+      <Table rowKey='userId' onRefresh={refresh} onReset={reset} columns={columns} {...tableProps} />
     </PageContainer>
   );
 }
